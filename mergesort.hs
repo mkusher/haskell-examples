@@ -1,8 +1,8 @@
 merge :: [Int] -> [Int] -> [Int]
 merge [] b = b
 merge a [] = a
-merge a b | head a >= head b = [head b] ++ (merge a (tail b))
-          | True = [head a] ++ (merge (tail a) b)
+merge (x:a) (y:b) | x >= y = [y] ++ (merge ([x]++a) b)
+                  | True = [x] ++ (merge a ([y]++b))
 
 mergeSort :: [Int] -> [Int]
 mergeSort list | length list < 2 = list
